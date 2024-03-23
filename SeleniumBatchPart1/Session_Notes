@@ -1,0 +1,764 @@
+@ Automation Testing
+
+27/02/2024
++ Difference between Manual & Automation testing:
+	1) Manual Testing:
+		- It is done manually by QA (human).
+		- This process is not accurate because of the possibilities of human error.
+		- It is time consuming.
+		- It is possible without programming knowledge.
+	2) Automation Testing:
+		- It is done with the use of scripts, code & automation tool(computer) by tester.
+		- This process is reliable because it is script & code based.
+		- It is very fast.
+		- It is not possible without programming.
+
++ History of selenium:
+	- Selenium was created by Jason Huggins in 2004 to avoid repeated execution of test cases.
+
++ What is selenium:
+	- It is open source framework to automate web-based application across different browsers and platforms
+	  using different languages like C, C#, Java, Python etc.
+
++ Features of selenium:
+	- Selenium supports various OS, browsers and programming languages.
+	  Following is the list:
+		- OS: Windows, Linux etc.
+		- Browsers: Chrome, firefox etc.
+		- Languages: C#, Java etc.
+	- Selenium can also be integrated with testing frameworks like TestNG for application testing and generating 
+	  reports.
+	- Selenium IDE provides a playback and record feature for authoriing tests without need to learn a test scripting 
+	  language.
+	- It also supports parallel test execution which reduces time and increases efficiency of tests.
+
++ Drawbacks of selenium:
+	- We can't automate images, qr, barcode etc using selenium.
+
+28/02/2024
++ Selenium components:
+	1) Selenium IDE:
+		- It is like record and run tool(means- you can record s/w and then perforn testing on that s/w).
+		- Now a days it is not used to that extent.
+		- To record a tests like recording a video & execute recorded tests like playing a video. Hence it is
+		  record & playback tool.
+	2) Selenium Grid:
+		- To reduce the time of automation scripts execution by running the scripts in parallel in different 
+		  machines.
+		- Instead of executing all the scripts on a single machine, to reduce the time of execution, all
+		  scripts will be divided across different machines & executed simultenioiusly.
+	3) Selenium WebDriver*:
+		- Is collection of open source APIs which are used to automate the testing of web application.
+		- It is used to automate web application testing to verify that it works as expected.
+		- It supports many browsers like- chrome, firefox, mozila, internet explorer & safari.
+		- Advantages:
+			- Open source
+			- Language independent(Java, python etc.)
+			- Third-party integrations
+			- Parallel testing
+			- Cross browser & platform independent
+		- Dis-advantages:
+			- Designing a framwork(starting a project) is time consuming
+			- Not an All-in-One solution(requires 3rd party integrations)
+			- Slow test development due to the Script-Based approach
+			- No participation from Non-technical resources
+
++ Selenium 3 architecture:
+
+	C#						Chrome Driver			Chrome
+	java, etc.				IE Driver				IE browser
+
+	Client library 	<-->	Drivers 	    <-->	Browsers
+			    JSON Protocol				 W3C
+		                	
+
++ Selenium 4 architecture:
+
+	C#						Chrome Driver			Chrome
+	java, etc.				IE Driver				IE browser
+
+	Client library 	<-->	Drivers 	    <-->	Browsers
+			    	 W3C				    W3C
+
+* W3C protocol was introduced because all the web browsers followed the W3C standards and also all the browser 
+   drivers followed the W3C standards. To standardized the communication, JSON wire protocol was replaced by W3C. 
+   This helped in better communication with the browsers, stability, and common code (i.e. no browser specific code required). 
+   Due to W3C there is a direct transfer of information between client and server. Major components of selenium 4 are 
+   selenium client and webdriver language bindings.
+
++ Difference between W3C & JSON wire protocol:
+	- W3C WebDriver Protocol: The W3C WebDriver protocol is the latest standard for browser automation and 
+	  is supported by modern browsers. It defines a standard way for WebDriver clients (like Selenium) to 
+	  communicate with browsers. It uses standard web technologies like JSON and HTTP. 
+	  The W3C WebDriver protocol aims to provide a more consistent and reliable way to automate browsers across 
+	  different implementations.
+	- JSON Wire Protocol: The JSON Wire Protocol was the original protocol used by Selenium for browser automation. 
+	  It is a RESTful protocol that uses JSON as the data interchange format. It was simpler than the 
+	  W3C protocol and provided basic commands for browser automation. However, it lacked some features 
+	  and was not as widely adopted as the W3C protocol.
+
+29/02/2024
+
+01/03/2024
++ Difference between Selenium 3 & Selenium 4:
+	1. Communication between client & server: 
+		- Selenium 3 architecture uses JSON wire protocol to transfer information from the client to the server
+		  over HTTP. Selenium 4 has droped JSON wire protocol to ensure direct communication  between client 
+		  & server.
+	2. Selenium GRID: 
+		- In selenium 3 testers are bound to start the hub & node jars every time they need to execute test 
+		  automation.
+		- On the contrary, in selenium 4, hub & node jars are packed in single jar and it is not required for 
+		  the tester to start it each time they need to execute automation tests.
+	3. Selenium IDE: 
+		- It is record & play tool which was only supported by Firefox browser in Seleneium 3.
+		- In selenium 4 it also supports chrome along with firefox browser.
+	4. Action Class: 
+		- There are few methods that are newly added to the "action" class in selenium 4, they are-
+			> contextClick()
+			> Click()
+			> ClickAndHold()
+			> doubleClick()
+			> release()
+	5. Chrome Dev Tools:
+		- This is new feature in selenium 4, as some applications are difficult to automate as they have 
+		  different functionalities across different locations.
+		- It is hard to emulate the geo-location in browser using selenium.
+
++ Selenium WebDriver Architecture:
+	{i= interface, c= class}
+
+						SearchContext(i)
+		________________________|________________________________
+		|		           		|								|		(extends)
+JavaScriptExecutor(i)		WebDriver(i)				TakesScreenShot(i)
+		|________________________|_______________________________|
+				            	 |		(implements)
+						RemoteWebDriver(c)
+        _________________________|_______________________________
+		|		            	 |                              |	(extends)
+ChromiunDriver(c)		   FirefoxDriver(c)		            IEDriver(c)
+	_________|_________
+	|				  |(extends)
+ChromeDriver(c)	  EdgeDriver(c)
+
+
+02/03/2024
+
++ What is difference between close() & quit() of WebDriver class?
+	1) close():
+		- It will close only single window where their is control.
+	2) quit():
+		- It will close all windows.
+		
++ What is difference between get() & navigate().to()?
+	1) get():
+		- It will load the target page completely and then move futher.
+		- It does not have in-built methods like as navigate() to take control from one page to another.
+	2) navigate().to():
+		- It does not wait for page to load completely.
+		- We can easily navigate from one page to another
+		- But internally navigate().to() calls get() only.
+		
++ What are web elements?
+	- Everything on a web page(like textbox, links, buttons, checkbox etc.) is known as elements.
+	
+	+ findElement():
+		- It is a method in webdriver class to find particular/single web element on web page.
+		
++ What are locators present is Selenium Webdriver?
+	- Attributes present in HTML tags are known as locators in selenium.
+	- Used to automate webelements present on webpage using selenium scripts.
+	- Locators:
+		1)id			
+		2)name		
+		3)className
+		4)CSSselectors
+		5)xpath
+		6)linktext	
+		7)partiallinktext
+		8)tagname
+
++ Some methods of WebDriver class:
+	- get()
+	- getTitle()
+	- getPageSource()	...(used to get source code of webpage)
+	- getCurrentUrl()
+	- close()
+	- quit()
+	- manage()
+	- navigate()
+	- findElement()
+	- findElements() etc.
+	
++ What is manage():
+	- It is used to manage webpage window(maximize or minimize window size).
+	
+
+05/03/2024
+
++ getWindowHandle(): Is used to get the id of the single window/tab where driver is currently present.
++ getWindowHandles(): Is used to get ids of all windows/tabs and stored in set.
+
+
+06/03/2024
+
++ DropDown list:
+	- We can select values in dropdown list in 3 ways:
+		1. selectByIndex():
+			- It will print value present at that corresponding index value.
+		2. selectByValue():
+			- It will print value/name by giving value of that corresponding name.
+		3. selectByVisible():
+			- Give actual name you want to print.
+			
+
+07/03/2024
++ What is Synchronization in Selenium?
+	- Sometimes what happens is that your website is too slow to load but the script(program) you 
+	  wrote is very fast & this causes mis-communication between your Script and Website which
+	  you are testing.
+	- Your script will be executed completely but the webpage will be still loading and this will
+	  throw an error or exception like- "no such element found".
+	  
++ How to handle synchronization problem?
+	- There are 2 ways to handle:
+		1. Implicit wait:
+			- It is applied globally or to all elements present on the webpage.
+		2. Explicit wait:
+			- It is applied to particular/single element on the webpage.
+			- There are 2 types:
+				1. WebDriver wait:
+				2. Fluent wait:
+					- Here it overcome some drawbacks of WebDriber wait.
+					- It ignore exception.
+					- It has concept called polling time.
+					
+					
++ Taking ScreenShot in selenium
+	- we take screenshot as an evidence
+	- we can take two types of screenshot:
+		1. web page SS:
+			- ScreenShot of complete window/tab.
+		2. web element SS:
+			- ScreenShot of particular element on webpage.
+					
+			   
+					
+11/03/2024
+
++ What is XPATH?
+	- XPath, in the context of Selenium, is a powerful locator method used to target specific 
+	  elements on a webpage by navigating through its HTML structure. It leverages XPath expressions, 
+	  a syntax specifically designed for traversing XML documents.
+
+	- Here's a breakdown of XPath in Selenium:
+		- Purpose: When simpler locators like ID, class name, or name attribute fail to uniquely 
+		  identify an element, XPath provides a more granular approach.
+		- Functionality:  XPath expressions traverse the HTML document's Document Object Model(DOM)
+		  tree, pinpointing the desired element based on a combination of factors like HTML tags, 
+		  attributes, and their position within the structure.
+
+	- Types: There are two main categories of XPath expressions used in Selenium:
+		- Absolute XPath: This method defines a complete path from the root element (/) down to 
+		  the target element. While precise, it becomes fragile if the HTML structure changes 
+		  even slightly.
+		- Relative XPath: This approach starts from a closer element in the DOM hierarchy and 
+		  navigates towards the target element. It's more flexible and adaptable to minor 
+		  structural changes.
+
+	- Benefits:
+		- Precision: XPath allows for very specific targeting of elements, even when they share 
+		  similar attributes with other elements on the page.
+		- Flexibility:  It can handle complex web page structures and locate elements that 
+		  might be difficult to target with simpler methods.
+
+	- Drawbacks:
+		- Learning Curve:  XPath expressions can be intricate and require practice to write effectively.
+		- Maintenance:  Absolute XPaths become brittle if the underlying HTML structure changes.					
+
+	- Difference between Absolute and Relative XPATH.
+		- Absolute:
+			1. It begins from root node i.e. "html" of html document.
+			2. It uses /(single forward slash)(represents root node).
+		- Relative:
+			1. It begins from the current node of the html document.
+			2. It uses //(double forward slash).
+			
+			
+		
+12/03/2024
+
++ Web tables in selenium.
+	- Web tables in Selenium refer to HTML tables presented on a webpage. Selenium provides 
+	  functionalities to interact with these tables and their elements like rows, columns, 
+	  and cells. Here's a comprehensive look at web tables in Selenium:
+
+	- Structure of a Web Table:
+		- Web tables are defined using the <table> tag in HTML.
+		- Rows are created using <tr> tags, and each row represents a record.
+		- Columns are created using <td> tags for regular data cells and <th> tags for header cells.
+
+	- Types of Web Tables:
+		- Static Web Tables: These tables have a fixed number of rows and columns. The data is 
+		  pre-defined and doesn't change dynamically.
+		- Dynamic Web Tables: The content of these tables can change based on user interaction, 
+		  filters, or external data sources. The number of rows and columns might also be dynamic.
+
+	- Interacting with Web Tables in Selenium:
+		- Selenium offers methods to locate and manipulate elements within web tables. 
+		  Here's a common approach:
+			1. Locate the Table Element: Use Selenium's find_element method with locators 
+			   like ID, name, XPath, or CSS selectors to identify the entire <table> element.
+			2. Find Rows and Columns: Once you have the table element, you can find individual 
+			   rows using find_elements with locators for <tr> tags and columns using locators 
+			   for <td> or <th> tags.
+			3. Access Cell Data:  Having the row and column elements, you can extract the text 
+			   content of a cell using the text property.
+
+	- Challenges with Dynamic Web Tables:
+		- Locating Elements: Since the structure might change, relying on simple locators like 
+		  indices for rows and columns might not be reliable.
+
+	- Tips for Handling Dynamic Web Tables:
+		- Use XPath Effectively: XPath expressions can target elements based on relative positions 
+		  or specific attributes within the table's structure, making them more adaptable.
+		- Wait for the Table to Load: Use Selenium's waiting functionalities like WebDriverWait 
+		  to ensure the table is fully loaded before interacting with it, especially when dealing 
+		  with dynamic content.
+		- Consider Third-party Libraries: Libraries like selenium-webdriver offer helper methods 
+		  specifically designed for handling web tables.
+
+
+
+18/03/2024
+
++ What is Maven?
+	- Maven is a project management tool widely used alongside Selenium, a web automation framework, particularly 
+	  for Java-based projects. Here's how Maven simplifies Selenium projects:
+		1. Dependency Management:  Selenium relies on external libraries to function. Maven automatically downloads 
+		   and manages these dependencies, ensuring everyone on the project uses compatible versions. This 
+		   eliminates conflicts and keeps your project running smoothly.
+		2. Build Automation:  Compiling, testing, and packaging your Selenium project can involve repetitive tasks. 
+		   Maven automates these tasks through a defined lifecycle with commands like mvn clean, mvn install, 
+		   and mvn test. This streamlines the development process.
+		3. Project Structure:  Maven enforces a consistent project directory structure, making it easier for 
+		   developers to navigate and collaborate on the project.
+		4. Reporting:  Maven can generate reports on test execution, providing valuable insights into the health 
+		   of your Selenium tests.
+		5. CI/CD Integration:  Maven integrates well with continuous integration and continuous delivery (CI/CD) 
+		   tools like Jenkins, enabling automated builds and deployments of your Selenium tests.
+
+
++ What is POM.XML?
+	- Project Object Model (POM) file: This is an XML file named pom.xml that resides at the root of a Maven project. 
+	  It defines various aspects of the project, including dependencies, build configuration, plugins, and more. 
+	  It essentially acts as a blueprint for building, testing, and packaging the project.
+	  
++ What are dependencies?
+	- They are basically .jar files.
+
+
++ What is TestNG?
+	- TestNG is a popular open-source testing framework specifically designed for Java-based automation projects, 
+	  particularly when using Selenium for web UI testing. It provides a powerful and user-friendly approach to 
+	  writing, organizing, and executing automated tests. Here's how TestNG enhances automation with Selenium:
+		1. Annotations: TestNG leverages annotations (@BeforeTest, @AfterTest, etc.) to define pre-conditions, 
+		   post-conditions, test dependencies, and more. These annotations improve code readability and 
+		   maintainability.
+		2. Grouping and Execution Control: You can group related test cases together and selectively execute 
+		   specific groups or individual tests based on your needs. This allows for efficient test execution 
+		   during development, regression testing, or specific scenario testing.
+		3. Data-Driven Testing: TestNG's @DataProvider annotation facilitates data-driven testing, where you 
+		   can provide different sets of test data for a single test case. This enables efficient testing of 
+		   various scenarios with minimal code duplication.
+		4. Parallel Execution: TestNG allows parallel execution of test cases on multiple threads or machines, 
+		   significantly reducing overall test execution time, especially for large test suites.
+		5. Reporting:  TestNG generates comprehensive HTML reports that detail test execution results (pass/fail/skip), 
+		   execution times, and logs. This comprehensive reporting provides valuable insights into test execution 
+		   and aids in debugging failures.
+		6. Integration with Selenium: TestNG integrates seamlessly with Selenium, allowing you to leverage 
+		   Selenium's web automation capabilities within your TestNG test cases. This combination simplifies 
+		   writing robust and maintainable automated tests for web applications.
+	- In essence, TestNG provides a structured and feature-rich framework that empowers you to write effective 
+	  and efficient automated tests using Selenium. It streamlines the automation process, promotes code 
+	  reusability, and offers valuable reporting for better test analysis.
+	- We can perform: 1] Unit testing 2] Functional 3] End-to-end 4] Integration Testing.
+	- What is Test Suit?
+		- It is a container which contains set of test cases which helps in execution and report generation.
+
+
+
+22/03/2024
+
+What is Assertion?
+	- In the context of automated testing, an assertion is a statement that verifies the expected outcome of a test 
+	  step. Assertions essentially compare an actual result with a predicted or expected result. 
+	  If the assertion holds true (i.e., the actual result matches the expectation), the test proceeds. If the 
+	  assertion fails (i.e., there's a mismatch), the test fails, indicating an issue with the application 
+	  under test.
+	- Here's a breakdown of assertions in TestNG:
+		1. Purpose: Assertions are the cornerstone of verifying test case functionality. They ensure your 
+		   tests validate the intended behavior of the application.
+		2. Types of Assertions in TestNG: TestNG offers a rich set of assertion methods covering various comparison 
+		   scenarios. Here are some common examples:
+			- assertEquals: Checks if two values are equal.
+			- assertTrue: Verifies if a condition is true (often used for boolean values).
+			- assertFalse: Verifies if a condition is false.
+			- assertNotNull: Confirms that an object is not null.
+			- There are many more assertion methods for specific comparisons (e.g., strings, objects, collections).
+		3. Hard vs. Soft Assertions:  TestNG supports two primary categories of assertions:
+			- Hard Assertions (default): These assertions terminate test execution immediately upon failure. Any 
+			  subsequent steps in the test case are skipped, and the test is marked as failed. This is ideal for 
+			  critical validations where a failure indicates a significant issue.
+			- Soft Assertions (using SoftAssert class): These assertions allow the test to continue execution even 
+			  if the assertion fails. All failures are logged, and the test is marked as failed only after all 
+			  assertions are evaluated. This can be useful for identifying multiple issues within a single test case.
+	
+	- Benefits of Assertions:
+		1. Improved Test Reliability: Assertions make your tests more reliable by explicitly stating expected 
+		   outcomes and catching errors early.
+		2. Enhanced Readability: Assertions improve test code readability by clearly separating test steps from 
+		   validation checks.
+		3. Early Defect Detection: Assertions help identify issues during test execution, enabling faster debugging 
+		   and rectification.
+	- By effectively using assertions in your TestNG tests, you can write robust and informative tests that ensure 
+	  the quality and functionality of your application.
+
+
+
++ Fetching data from excel
+
+	- Need to follow this steps:
+		- file->reading mode-->excel file-->sheets-->rows-->columns-->data.
+	
+	1. Setting Up:
+		- Download the Apache POI libraries (HSSF for older XLS files, XSSF for newer XLSX files) or use a dependency 
+		  management tool like Maven to include them in your project.
+	2. Code Structure:
+		- 
+		import java.io.FileInputStream;
+		import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+		import org.apache.poi.ss.usermodel.Sheet;
+		import org.apache.poi.ss.usermodel.Row;
+		import org.apache.poi.ss.usermodel.Cell;
+		
+		public class ReadExcelData {
+		
+		  public static void main(String[] args) throws Exception {
+		
+		    // Specify the Excel file path
+		    String filePath = "path/to/your/data.xlsx";
+		
+		    // Read the Excel file
+		    XSSFWorkbook workbook = readExcelFile(filePath);
+		
+		    // Process the data from the workbook
+		    processData(workbook);
+		  }
+		
+		  // Method to read the Excel file
+		  private static XSSFWorkbook readExcelFile(String filePath) throws Exception {
+		    FileInputStream inputStream = new FileInputStream(filePath);
+		    return new XSSFWorkbook(inputStream);
+		  }
+		
+		  // Method to process data from the workbook (replace with your logic)
+		  private static void processData(XSSFWorkbook workbook) {
+		    // Get the sheet you want to read from
+		    Sheet sheet = workbook.getSheetAt(0); // 0 is the index of the first sheet
+		
+		    // Iterate through rows and cells to extract data
+		    for (Row row : sheet) {
+		      for (Cell cell : row) {
+		        // Get cell value based on data type and handle null values
+		        String value = getCellValue(cell);
+		        // Use the extracted value in your automation logic
+		        System.out.println(value); // Example: print the value
+		      }
+		    }
+		  }
+		
+		  // Method to get cell value considering data types (replace with more robust logic)
+		  private static String getCellValue(Cell cell) {
+		    if (cell == null) {
+		      return "";
+		    }
+		    switch (cell.getCellType()) {
+		      case STRING:
+		        return cell.getStringCellValue();
+		      case NUMERIC:
+		        return Double.toString(cell.getNumericCellValue());
+		      default:
+		        return "";
+		    }
+		  }
+		}
+
+	3. Explanation:
+		- We import necessary classes for file input, reading Excel files (XSSFWorkbook), and working with sheets, 
+		  rows, and cells.
+		- The main method demonstrates the overall flow.
+		- The readExcelFile method opens the specified Excel file and returns a workbook object.
+		- The processData method retrieves the desired sheet (you can adjust the sheet index).
+		- We iterate through rows and cells using nested loops.
+		- The getCellValue method extracts the cell value based on its data type (String, numeric, etc.) and handles 
+		  null values. You can extend this logic for other data types.
+		- Finally, we process the extracted data (here, we simply print it). Replace this with your specific automation 
+		  actions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+** Interview Questions**
+1. What are selenium components?
+	- Selenium is a suite of tools for automating web browsers. Here are the main components you need to know 
+	  about for an interview:
+		1. Selenium WebDriver: This is the core component that allows you to control a web browser through 
+		   code. It interacts with browsers using browser-specific drivers (e.g., ChromeDriver for Chrome).
+		2. Selenium IDE: This is a record-and-playback tool for writing basic automation scripts. It's a good 
+		   starting point for beginners but may not be suitable for complex tests.
+		3. Selenium Grid: This component allows you to run your tests in parallel on multiple browsers and 
+		   machines, saving you time on large test suites.
+		   
+2. Difference between selenium ide and webdriver.
+	- Selenium IDE:
+		- Free, record-and-playback tool for creating basic automation scripts.
+		- Easy to learn, ideal for beginners or quick tests.
+		- Limited functionality for complex scenarios.
+	- Selenium WebDriver:
+		- Powerful API for programmatic control of web browsers through code.
+		- Offers greater flexibility and customization for advanced automation.
+		- Requires programming knowledge (e.g., Java, Python).
+
+3. What is selenium GRID, RC, WebDriver?
+	- Selenium (Project): The overarching suite of tools for browser automation.
+	- Selenium RC (Remote Control): (Partially Legacy) An older API for browser automation through a server.
+	  Less popular now due to WebDriver's advancements.
+	- Selenium Grid: Allows parallel execution of tests across different browsers and machines.
+	  Efficiently handles large test suites.
+	- Selenium WebDriver: Modern API focused on direct interaction with browsers using browser-specific drivers.
+	  Highly preferred for most automation scenarios.
+
+4. Drawback of selenium IDE.
+	- Limited Capabilities: Not suitable for complex test logic or extensive data-driven testing.
+	- Maintenance Challenges: Recorded scripts can become brittle and difficult to maintain as web pages evolve.
+	- Reusability Issues: Scripts are tightly coupled to specific web pages, hindering reusability across 
+	  different projects.
+
+5. What is webDriver?
+	- As explained earlier, WebDriver is the core component of Selenium for programmatic browser control.
+	- It provides an API for interacting with web elements, simulating user actions (clicks, typing text), and 
+	  handling navigation.
+	- You need a browser-specific driver (e.g., ChromeDriver) to use WebDriver with a particular browser.
+
+6. Explain selenium webdriver hierarchy.
+	- Top Level: WebDriver interface defines core methods like get(), find_element(), quit().
+	- Concrete Implementations: Browser-specific driver classes (e.g., ChromeDriver, FirefoxDriver) implement 
+	  the WebDriver interface.
+	- RemoteWebDriver: Used with Selenium Grid for distributed testing on remote machines.
+
+7. Difference between selenium 3 & 4.
+	- Selenium 3: Widely used version with stable support for various languages and browser interactions.
+	- Selenium 4 (Beta): Introduces features like improved browser devtools integration, enhanced mobile automation, 
+	  and W3C WebDriver standard compliance.
+		- Still under development, consider compatibility needs before adoption.
+
+8. What is difference between close() & quit() of WebDriver class?
+	- close(): Closes the current active browser window.
+	- quit(): Closes all browser windows and quits the WebDriver session.
+
+9. What is difference between get() & navigate().to()?
+	- Both methods navigate to a URL, but with subtle differences:
+	1. get():
+		- Simple and reliable way to navigate to a URL.
+		- Waits for the page to load completely before proceeding (waits for the DOM to be ready).
+	2. navigate().to():
+		- Part of the Navigation interface for more advanced navigation control.
+		- May not always wait for the entire page to load (depends on browser implementation).
+
+10. What are web elements?
+	- Web elements are the building blocks of a web page (e.g., buttons, text boxes, links, images).
+	- WebDriver interacts with these elements to automate actions like clicking, entering text, and verifying content.
+
+11. What are locators present is Selenium Webdriver?
+	- Locators are used to identify and locate specific web elements on a page.
+	- Common locators include:
+		1. id: Unique identifier for an element.
+		2. name: Attribute value of the name attribute.
+		3. className: Value(s) of the class attribute.
+		4. tagName: HTML tag name of the element (e.g., button, input).
+		5. linkText: Exact text of a link.
+		6. partialLinkText: Part of the text of a link.
+		7. xpath: Powerful, XML-like path to locate elements.
+		8. cssSelector: CSS selectors to target elements based on styles.
+
+12. What are the static methods present in "By" class?
+	- The By class in Selenium WebDriver provides static methods to create instances of the By class, which are 
+	  then used to locate web elements on a web page. Here are the commonly used methods present in the By class:
+		1. id(String id): This method creates a By object to locate an element by its unique identifier (id attribute).
+		2. name(String name): This method creates a By object to locate an element by the value of its name attribute.
+		3. className(String className): This method creates a By object to locate an element by its class name (value 
+		   of the class attribute).
+		4. tagName(String tagName): This method creates a By object to locate an element by its HTML tag name (e.g., 
+		   button, input).
+		5. linkText(String linkText): This method creates a By object to locate a link element with the exact text 
+		   specified by linkText.
+		6. partialLinkText(String partialLinkText): This method creates a By object to locate a link element 
+		   containing the text specified by partialLinkText.
+		7. xpath(String xpathExpression): This method creates a By object to locate an element using an XPath 
+		   expression. XPath is a powerful, XML-like language for navigating through an HTML document and selecting 
+		   elements.
+		8. cssSelector(String cssSelector): This method creates a By object to locate an element using a CSS selector. 
+		   CSS selectors are another way to target elements based on their styles and attributes.
+
+13. What is findElement()?
+	- findElement() is a method in Selenium WebDriver used to locate a single web element on a page.
+	- It takes a By object (created using methods like id, name, etc.) as an argument and returns a WebElement 
+	  object representing the found element.
+	- If no element matches the locator, it throws a NoSuchElementException.
+
+14. What is return type of getWndowHandle()?
+	- getWindowHandle() returns a String value.
+	- This string represents the unique identifier of the current browser window/tab.
+
+15. What is difference between getWndowHandle() & getWndowHandles()?
+	- getWindowHandle(): Returns the handle of the current browser window/tab.
+	- getWindowHandles(): Returns a Set<String> containing handles of all open browser windows/tabs.
+
+16. How to switch from one tab to another tab?
+	- There are two main approaches:
+		1. Using getWindowHandles() and switchTo().window(String handle):
+			- Get all window handles using getWindowHandles().
+			- Identify the handle of the target window you want to switch to.
+			- Use switchTo().window(handle) to switch to that specific window.
+		2. Using switchTo().activeElement():
+			- This approach switches focus to the element that is currently active (may not always be the desired tab).
+			- It's less reliable than the first method.
+
+17. What is synchronization?
+	- Synchronization is crucial in Selenium WebDriver to ensure actions are performed on fully loaded elements.
+	- Without synchronization, your tests might try to interact with elements that aren't yet available on the 
+	  page, leading to errors.
+
+18. What is difference between implicit & explicit wait?
+	- Implicit Wait:
+		- Sets a global wait time for all element lookups.
+		- If the element isn't found within the specified time, Selenium throws an exception.
+		- Less precise: Might cause unnecessary waiting if the element appears sooner.
+	- Explicit Wait:
+		- Waits for a specific condition to be met before proceeding with the test.
+		- Offers more control: You define the expected condition (e.g., element is clickable, text is present).
+		- More efficient: Waits only until the element is actually available.
+
+19. What are the drawbacks of implicit wait?
+	- Unnecessary waiting: Tests might wait for the full implicit wait time even if elements appear sooner.
+	- Difficult to maintain: Managing a single wait time for all tests can be inflexible.
+
+20. What is webdriverwait in selenium?
+	- WebDriverWait is a class in Selenium that provides methods for implementing explicit waits.
+	- It allows you to define conditions (e.g., element visibility, presence of text) and a maximum wait time.
+	- Once the condition is met, the test proceeds. Otherwise, it throws an exception after the timeout.
+
+21. What is difference between webdriverwait and fluent wait?
+	- Both are used for explicit waits, but with slight variations:
+		- WebDriverWait: Offers a static approach, defining conditions and timeout upfront.
+		- Fluent Wait: Provides a more chainable syntax for building waits step-by-step.
+
+22. Types of waits in selenium.
+	1. Implicit Wait: As explained earlier, sets a global wait time for all element lookups.
+	2. Explicit Wait: Uses WebDriverWait or Fluent Wait for specific conditions.
+	3. Polling: A custom wait implementation where you check for a condition repeatedly with a short interval.
+
+23. Difference between test case & test suit.
+	- Test Case: A specific scenario testing a particular functionality of an application.
+	- Test Suite: A collection of related test cases grouped together for execution.
+
+24. What are dependencies?
+
+25. What is POM.XML?
+	- Not directly related to Selenium WebDriver, but commonly used in test automation frameworks like Maven.
+	- POM (Project Object Model) is an XML file that defines project dependencies, build configuration, and plugins 
+	  used in a Maven project.
+
+26. What do you know about maven?
+	- Maven is a build automation tool for Java projects.
+	- It manages dependencies, builds projects, and helps with the testing process.
+
+27. What are the annotations present in testNG?
+	- TestNG provides various annotations for managing test execution, assertions, and more. Here are some common ones:
+		1. @Test: Marks a method as a test case to be executed.
+		2. @BeforeSuite: Executes a method once before all test suites in the project run.
+		3. @BeforeClass: Executes a method once before all test cases in a class run.
+		4. @BeforeMethod: Executes a method before each test case.
+		5. @AfterMethod: Executes a method after each test case.
+		6. @AfterClass: Executes a method once after all test cases in a class run.
+		7. @AfterSuite: Executes a method once after all test suites in the project run.
+		8. @DataProvider: Provides data for test cases from a separate source (e.g., Excel sheet).
+		9. @Factory: Creates multiple test instances with different data parameters.
+		10. @Ignore: Skips a test case during execution.
+
+28. What is difference between @BeforeSuit & @BeforeClass?
+	- Both are used for setup tasks, but the execution scope differs:
+		1. @BeforeSuite: Executes once before all test suites in the entire project run.
+		2. @BeforeClass: Executes once before all test cases within a specific test class run.
+
+29. Why to use annotations?
+	- Annotations provide a cleaner and more declarative way to define test behavior and configuration.
+	- They improve code readability and maintainability.
+	- Annotations can be processed by test frameworks like TestNG to automate test execution.
+
+30. What are the methods present in Assert class?
+	- TestNG's Assert class offers various methods for making assertions in your test cases. Some common ones include:
+		1. assertEquals(expected, actual): Verifies two values are equal.
+		2. assertTrue(condition): Verifies a condition is true.
+		3. assertFalse(condition): Verifies a condition is false.
+		4. assertNotNull(object): Verifies an object is not null.
+		5. assertNull(object): Verifies an object is null.
+
+31. What is assertion in testNG?
+	- An assertion is a statement verifying an expected outcome in your test case.
+	- TestNG's Assert class provides methods to make these assertions.
+	- If an assertion fails, the test case is marked as failed.
+
+32. What is data-driven-testing?
+	- Data-driven testing involves running the same test case with different sets of data.
+	- This allows you to efficiently test various scenarios without writing separate test cases for each data point.
+	- Data can be stored in external sources like CSV files or Excel sheets, and frameworks like TestNG can utilize 
+	  them through @DataProvider annotation.
+
+33. What is difference between XSSF & HSSF?
+	- XSSF(XML SpreadSheet Format): a class which is used for new excel files .xlsx
+	- HSSF(Horrible SpreadSheet Format): a class which was used for old excel files .xls
+34. Which dependencies are required to fetch data from MS Excel?
+	- Apache POI
+	- Apache POI OOXML
+
+
+
+
+
+
+
+
+
+

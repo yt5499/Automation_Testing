@@ -3,11 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="march24.TestNGEx2_3">
+      <class name="define_labs.Registrations">
         <methods>
-          <include name="testcase1"/>
+          <include name="register"/>
+          <include name="setup"/>
         </methods>
-      </class> <!-- march24.TestNGEx2_3 -->
+      </class> <!-- define_labs.Registrations -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

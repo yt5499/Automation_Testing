@@ -1,29 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-03-24T20:46:44 IST" name="Default suite" finished-at="2024-03-24T20:47:03 IST" duration-ms="18612">
+  <suite started-at="2024-03-28T15:02:36 IST" name="Default suite" finished-at="2024-03-28T15:05:12 IST" duration-ms="155661">
     <groups>
     </groups>
-    <test started-at="2024-03-24T20:46:44 IST" name="Default test" finished-at="2024-03-24T20:47:03 IST" duration-ms="18612">
-      <class name="march24.TestNGEx3">
-        <test-method is-config="true" signature="setup()[pri:0, instance:march24.TestNGEx3@31304f14]" started-at="2024-03-24T20:46:44 IST" name="setup" finished-at="2024-03-24T20:47:02 IST" duration-ms="18190" status="PASS">
+    <test started-at="2024-03-28T15:02:36 IST" name="Default test" finished-at="2024-03-28T15:05:12 IST" duration-ms="155661">
+      <class name="define_labs.Registrations">
+        <test-method is-config="true" signature="setup()[pri:0, instance:define_labs.Registrations@4135c3b]" started-at="2024-03-28T15:02:36 IST" name="setup" finished-at="2024-03-28T15:04:12 IST" duration-ms="95512" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testcase1()[pri:0, instance:march24.TestNGEx3@31304f14]" started-at="2024-03-24T20:47:02 IST" name="testcase1" finished-at="2024-03-24T20:47:02 IST" duration-ms="29" status="PASS">
+        <test-method signature="register()[pri:0, instance:define_labs.Registrations@4135c3b]" started-at="2024-03-28T15:04:12 IST" name="register" finished-at="2024-03-28T15:05:12 IST" duration-ms="60080" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testcase1 -->
-        <test-method signature="testcase2()[pri:0, instance:march24.TestNGEx3@31304f14]" started-at="2024-03-24T20:47:02 IST" name="testcase2" finished-at="2024-03-24T20:47:02 IST" duration-ms="20" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testcase2 -->
-        <test-method is-config="true" signature="outtro()[pri:0, instance:march24.TestNGEx3@31304f14]" started-at="2024-03-24T20:47:02 IST" name="outtro" finished-at="2024-03-24T20:47:03 IST" duration-ms="292" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- outtro -->
-      </class> <!-- march24.TestNGEx3 -->
+        </test-method> <!-- register -->
+      </class> <!-- define_labs.Registrations -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
